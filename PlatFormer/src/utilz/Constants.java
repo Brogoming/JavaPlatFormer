@@ -1,8 +1,8 @@
 package utilz;
 
-public class Constants {
+public class Constants { //changes animation based on player action 
 	
-	public static class Directions {
+	public static class Directions { //determines what direction the player is moving based on their input
 		public static final int LEFT = 0;
 		public static final int UP = 1;
 		public static final int RIGHT = 2;

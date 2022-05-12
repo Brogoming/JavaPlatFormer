@@ -42,7 +42,7 @@ public class GamePanel extends JPanel{
 		
 		for(int j = 0; j < animations.length; j++) { //row
 			for(int i = 0; i < animations[j].length; i++) {
-				animations[j][i] = image.getSubimage(i*64, j*40, 64, 40); //gets the image from each column on row 0
+				animations[j][i] = image.getSubimage(i*64, j*40, 64, 40); //gets the image from each column on row j
 				
 			}
 		}
@@ -72,12 +72,12 @@ public class GamePanel extends JPanel{
 		
 	}
 	
-	public void setDirection(int direction) {
+	public void setDirection(int direction) { //if the player is moving set moving to true
 		this.playerDir = direction;
 		moving = true;
 	}
 	
-	public void setMoving(boolean moving) {
+	public void setMoving(boolean moving) { // moving = moving to whatever calls this sets moving to true or false
 		this.moving = moving;
 	}
 	
@@ -113,7 +113,7 @@ public class GamePanel extends JPanel{
 		
 	}
 
-	private void setAnimation() { //determines what animation we will have for the frame
+	private void setAnimation() { //if moving is true it switches the animation to running if not it goes back to idle
 		if(moving) {
 			playerAction = RUNNING;
 		} else {
@@ -124,7 +124,7 @@ public class GamePanel extends JPanel{
 
 	private void updateAnimationTick() { //cycles through the animation
 		aniTick++;
-		if (aniTick >= aniSpeed) {
+		if (aniTick >= aniSpeed) { //if the animation tick is greater than or equal to the animation speed
 			aniTick = 0; //resets the tick
 			aniIndex++; 
 			if (aniIndex >= GetSpriteAmount(playerAction)) { //if the index is greater than or equal to 6
